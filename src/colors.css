@@ -1,0 +1,31 @@
+:root {
+	/* Oyster */
+	--color-oyster: #f9f4ea;
+	--color-oyster-light: #fcf9f0;
+	--color-oyster-dark: #e1dacf;
+
+	/* Sand */
+	--color-sand: #cdad85;
+	--color-sand-light: #e3cdaa;
+	--color-sand-dark: #b0916d;
+
+	/* Terracotta */
+	--color-terracotta: #c47457;
+	--color-terracotta-light: #d8927b;
+	--color-terracotta-dark: #a55d43;
+
+	/* Sage */
+	--color-sage: #9c9e80;
+	--color-sage-light: #b6b89d;
+	--color-sage-dark: #7f8168;
+
+	/* Truffle */
+	--color-truffle: #605f4b;
+	--color-truffle-light: #787764;
+	--color-truffle-dark: #494837;
+
+	/* Copper */
+	--color-copper: #b68036;
+	--color-copper-light: #d29d56;
+	--color-copper-dark: #946826;
+}
