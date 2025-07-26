@@ -8,13 +8,11 @@ const MainStyled = styled.main`
 `;
 
 const Title = styled.h1`
-	font-size: 1.875rem;
-	font-weight: bold;
 	margin-bottom: 1rem;
 `;
 
 const Paragraph = styled.p`
-	font-size: 1.125rem;
+	font-size: 1rem;
 `;
 
 export function Main() {
