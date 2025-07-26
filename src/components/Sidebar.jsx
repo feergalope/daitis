@@ -18,7 +18,7 @@ const StyledHeader = styled.header`
 	overflow: hidden;
 `;
 
-export function Navbar() {
+export function Sidebar() {
 	return (
 		<StyledHeader>
 			<Logo />

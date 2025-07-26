@@ -1,11 +1,11 @@
 import { AppLayout } from './components/AppLayout';
-import { Navbar } from './components/Navbar';
+import { Sidebar } from './components/Sidebar';
 import { Main } from './components/Main';
 
 function App() {
 	return (
 		<AppLayout>
-			<Navbar />
+			<Sidebar />
 			<Main />
 		</AppLayout>
 	);
