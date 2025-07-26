@@ -1,6 +1,6 @@
-import { AppLayout } from './components/AppLayout';
-import { Sidebar } from './components/Sidebar';
-import { Main } from './components/Main';
+import { AppLayout } from './ui/AppLayout';
+import { Sidebar } from './ui/Sidebar';
+import { Main } from './ui/Main';
 
 function App() {
 	return (
