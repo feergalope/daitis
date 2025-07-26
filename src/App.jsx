@@ -1,8 +1,13 @@
+import { AppLayout } from './components/AppLayout';
+import { Navbar } from './components/Navbar';
+import { Main } from './components/Main';
+
 function App() {
 	return (
-		<>
-			<h1>Hello Daitis!</h1>
-		</>
+		<AppLayout>
+			<Navbar />
+			<Main />
+		</AppLayout>
 	);
 }
 
