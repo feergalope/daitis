@@ -7,9 +7,9 @@ const StyledHeader = styled.header`
 	background-color: var(--color-sage-dark);
 	color: var(--color-oyster-light);
 
-	height: calc(100vh - 10px); /* 100% del viewport menos 5px arriba y 5px abajo */
-	width: 10rem;
-	margin: 5px;
+	height: calc(100dvh - 2rem); /* Viewport - margins */
+	width: 12rem;
+	margin: 1rem;
 
 	margin-right: 10px;
 	padding: 10px;
