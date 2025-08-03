@@ -9,7 +9,7 @@ const StyledNavLink = styled.span`
 	transition: color 0.1s ease-in-out;
 
 	&:hover {
-		color: var(--color-truffle-dark);
+		color: var(--color-graphite-dark);
 		cursor: pointer;
 	}
 `;

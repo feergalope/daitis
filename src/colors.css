@@ -1,31 +1,21 @@
 :root {
-	/* Oyster */
-	--color-oyster: #f9f4ea;
-	--color-oyster-light: #fcf9f0;
-	--color-oyster-dark: #e1dacf;
+	/* Milk */
+	--color-milk: #F9F7F0;
+	--color-milk-light: #FDFCF8;
+	--color-milk-dark: #E8E4D8;
 
-	/* Sand */
-	--color-sand: #cdad85;
-	--color-sand-light: #e3cdaa;
-	--color-sand-dark: #b0916d;
+	/* Light Stone */
+	--color-light-stone: #D8D2C2;
+	--color-light-stone-light: #E8E2D2;
+	--color-light-stone-dark: #C8C2B2;
 
-	/* Terracotta */
-	--color-terracotta: #c47457;
-	--color-terracotta-light: #d8927b;
-	--color-terracotta-dark: #a55d43;
+	/* Desert Clay */
+	--color-desert-clay: #B17457;
+	--color-desert-clay-light: #C18467;
+	--color-desert-clay-dark: #A16447;
 
-	/* Sage */
-	--color-sage: #9c9e80;
-	--color-sage-light: #b6b89d;
-	--color-sage-dark: #7f8168;
-
-	/* Truffle */
-	--color-truffle: #605f4b;
-	--color-truffle-light: #787764;
-	--color-truffle-dark: #494837;
-
-	/* Copper */
-	--color-copper: #b68036;
-	--color-copper-light: #d29d56;
-	--color-copper-dark: #946826;
+	/* Graphite */
+	--color-graphite: #4A4947;
+	--color-graphite-light: #5A5957;
+	--color-graphite-dark: #3A3937;
 }

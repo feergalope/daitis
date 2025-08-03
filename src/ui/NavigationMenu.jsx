@@ -19,7 +19,7 @@ const StyledNavLink = styled(NavLink)`
 	font-weight: 500;
 	padding: 0.5rem 0.25rem;
 	border-radius: 0.5rem;
-	color: var(--color-truffle-dark);
+	color: var(--color-graphite);
 	text-decoration: none;
 	transition:
 		background-color 0.2s ease,
@@ -30,13 +30,14 @@ const StyledNavLink = styled(NavLink)`
 	}
 
 	&:hover {
-		background-color: var(--color-sage);
+		background-color: var(--color-light-stone);
 		color: white;
 	}
 
 	&.active {
-		background-color: var(--color-sage-light);
+		background-color: var(--color-desert-clay-light);
 		color: white;
+		pointer-events: none;
 	}
 `;
 

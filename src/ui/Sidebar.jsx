@@ -4,8 +4,8 @@ import { Logo } from './Logo';
 import { NavigationMenu } from './NavigationMenu';
 
 const StyledHeader = styled.header`
-	background-color: var(--color-sage-dark);
-	color: var(--color-oyster-light);
+	background-color: var(--color-light-stone-dark);
+	color: var(--color-graphite-dark);
 
 	height: calc(100dvh - 2rem); /* Viewport - margins */
 	width: 12rem;

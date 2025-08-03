@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const AppLayoutStyled = styled.div`
-	background-color: var(--color-oyster-light);
-	color: var(--color-truffle-dark);
+	background-color: var(--color-milk-light);
+	color: var(--color-graphite-dark);
 	display: flex;
 
 	font-family: var(--font-family-sans-serif);
