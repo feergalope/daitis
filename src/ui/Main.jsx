@@ -1,4 +1,8 @@
 import styled from 'styled-components';
+import { Routes, Route } from 'react-router-dom';
+import { Home } from './Home';
+import { Menu } from './Menu';
+import { ShoppingList } from './ShoppingList';
 
 const MainStyled = styled.main`
 	flex: 1;
@@ -18,11 +22,11 @@ const Paragraph = styled.p`
 export function Main() {
 	return (
 		<MainStyled>
-			<Title>Welcome to the App</Title>
-			<Paragraph>
-				This is a simple application layout using styled-components for styling. You can navigate through the app using
-				the sidebar on the left.
-			</Paragraph>
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/menu" element={<Menu />} />
+				<Route path="/shopping-list" element={<ShoppingList />} />
+			</Routes>
 		</MainStyled>
 	);
 }

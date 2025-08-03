@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 import { FaLeaf, FaCalendarDays, FaBasketShopping } from 'react-icons/fa6';
 
 const NavList = styled.ul`
@@ -11,7 +12,7 @@ const NavList = styled.ul`
 
 const NavItem = styled.li``;
 
-const StyledNavLink = styled.a`
+const StyledNavLink = styled(NavLink)`
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
@@ -43,19 +44,19 @@ export function NavigationMenu() {
 	return (
 		<NavList>
 			<NavItem>
-				<StyledNavLink href="#" className="active">
+				<StyledNavLink to="/" end>
 					<FaLeaf />
 					Home
 				</StyledNavLink>
 			</NavItem>
 			<NavItem>
-				<StyledNavLink href="#">
+				<StyledNavLink to="/menu">
 					<FaCalendarDays />
 					Menu
 				</StyledNavLink>
 			</NavItem>
 			<NavItem>
-				<StyledNavLink href="#">
+				<StyledNavLink to="/shopping-list">
 					<FaBasketShopping />
 					Shopping list
 				</StyledNavLink>
