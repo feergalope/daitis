@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { FaLeaf, FaCalendarDays, FaBasketShopping } from 'react-icons/fa6';
+import { FaBarsProgress , FaCalendarDays, FaBasketShopping } from 'react-icons/fa6';
 
 const NavList = styled.ul`
 	display: flex;
@@ -46,8 +46,8 @@ export function NavigationMenu() {
 		<NavList>
 			<NavItem>
 				<StyledNavLink to="/" end>
-					<FaLeaf />
-					Home
+					<FaBarsProgress  />
+					Dashboard
 				</StyledNavLink>
 			</NavItem>
 			<NavItem>

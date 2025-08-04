@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Meal } from '../Meal';
 
 const ModalOverlay = styled.div`
 	position: fixed;
@@ -54,38 +55,6 @@ const CloseButton = styled.button`
 	}
 `;
 
-
-
-const MealItem = styled.div`
-	background-color: ${props => {
-		switch (props.category) {
-			case 'breakfast': return '#F59E0B'; // Orange
-			case 'lunch': return '#10B981'; // Green
-			case 'dinner': return '#8B5CF6'; // Purple
-			case 'snack': return '#EC4899'; // Pink
-			case 'dessert': return '#F97316'; // Orange-500
-			default: return '#6B7280'; // Gray
-		}
-	}};
-	color: white;
-	padding: 0.25rem 0.5rem;
-	margin-bottom: 0.25rem;
-	border-radius: 0.25rem;
-	font-size: 0.7rem;
-	font-weight: 500;
-	transition: opacity 0.2s ease;
-`;
-
-const MealName = styled.div`
-	font-weight: 600;
-	margin-bottom: 0.1rem;
-`;
-
-const MealTime = styled.div`
-	font-size: 0.6rem;
-	opacity: 0.9;
-`;
-
 const NoMealsMessage = styled.div`
 	text-align: center;
 	color: var(--color-stone-dark);
@@ -106,8 +75,6 @@ export function DayModal({ isOpen, onClose, selectedDate, meals }) {
 		});
 	};
 
-
-
 	return (
 		<ModalOverlay onClick={onClose}>
 			<ModalContent onClick={(e) => e.stopPropagation()}>
@@ -119,10 +86,7 @@ export function DayModal({ isOpen, onClose, selectedDate, meals }) {
 				{meals && meals.length > 0 ? (
 					<div>
 						{meals.map((meal, index) => (
-							<MealItem key={index} category={meal.category}>
-								<MealName>{meal.title}</MealName>
-								<MealTime>{meal.time}</MealTime>
-							</MealItem>
+							<Meal key={index} meal={meal} size="compact" />
 						))}
 					</div>
 				) : (

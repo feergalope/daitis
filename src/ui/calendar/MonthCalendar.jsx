@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { CalendarHeader } from './CalendarHeader';
 import { getDaysInMonth, formatMonthYear, isSelectedMonth } from '../../utils/calendar/monthUtils';
 import { DayModal } from './DayModal';
+import { Meal } from '../Meal';
 
 const MonthViewContainer = styled.div`
 	height: auto;
@@ -66,37 +67,7 @@ const DayNumber = styled.div`
 	margin-bottom: 0.25rem;
 `;
 
-const Event = styled.div`
-	background-color: ${props => {
-		switch (props.category) {
-			case 'breakfast': return '#F59E0B'; // Orange
-			case 'lunch': return '#10B981'; // Green
-			case 'dinner': return '#8B5CF6'; // Purple
-			case 'snack': return '#EC4899'; // Pink
-			case 'dessert': return '#F97316'; // Orange-500
-			default: return '#6B7280'; // Gray
-		}
-	}};
-	color: white;
-	padding: 0.25rem 0.5rem;
-	margin-bottom: 0.25rem;
-	border-radius: 0.25rem;
-	font-size: 0.7rem;
-	font-weight: 500;
-	transition: opacity 0.2s ease;
-`;
-
-const EventTitle = styled.div`
-	font-weight: 600;
-	margin-bottom: 0.1rem;
-`;
-
-const EventTime = styled.div`
-	font-size: 0.6rem;
-	opacity: 0.9;
-`;
-
-const MoreEvents = styled.div`
+const MoreMeals = styled.div`
 	color: var(--color-graphite);
 	font-size: 0.7rem;
 	font-style: italic;
@@ -111,7 +82,7 @@ export function MonthCalendar({
 	onViewChange, 
 	onNavigate, 
 	onGoToToday,
-	events
+	meals
 }) {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [selectedDate, setSelectedDate] = useState(null);
@@ -154,27 +125,24 @@ export function MonthCalendar({
 					const isCurrentMonthDay = day.getMonth() === currentDate.getMonth();
 					const isToday = day.toDateString() === today.toDateString();
 					const isSelectedMonthDay = isSelectedMonth(day, currentDate);
-					const dayEvents = events[dayNumber] || [];
-					const showMore = dayEvents.length > 3;
-					const displayEvents = dayEvents.slice(0, 3);
-					const hasMeals = dayEvents.length > 0 && isCurrentMonthDay;
+					const dayMeals = meals[dayNumber] || [];
+					const showMore = dayMeals.length > 3;
+					const displayMeals = dayMeals.slice(0, 3);
+					const hasMeals = dayMeals.length > 0 && isCurrentMonthDay;
 					
 					return (
 						<DayCell 
 							key={index}
 							className={`${!isCurrentMonthDay ? 'other-month' : ''} ${isToday ? 'current-day' : ''} ${isCurrentMonthDay && !isSelectedMonthDay ? 'other-week' : ''}`}
 							$hasMeals={hasMeals}
-							onClick={() => handleDayClick(day, dayEvents, isCurrentMonthDay)}
+							onClick={() => handleDayClick(day, dayMeals, isCurrentMonthDay)}
 						>
 							<DayNumber>{dayNumber}</DayNumber>
-							{displayEvents.map((event, eventIndex) => (
-								<Event key={eventIndex} category={event.category}>
-									<EventTitle>{event.title}</EventTitle>
-									<EventTime>{event.time}</EventTime>
-								</Event>
+							{displayMeals.map((meal, mealIndex) => (
+								<Meal key={mealIndex} meal={meal} size="compact" />
 							))}
 							{showMore && (
-								<MoreEvents>{dayEvents.length - 3} more...</MoreEvents>
+								<MoreMeals>{dayMeals.length - 3} more...</MoreMeals>
 							)}
 						</DayCell>
 					);

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Routes, Route } from 'react-router-dom';
-import { Home } from '../pages/Home';
+import { Dashboard } from '../pages/Dashboard';
 import { Menu } from '../pages/Menu';
 import { ShoppingList } from '../pages/ShoppingList';
 import { useLoading } from '../context/LoadingContext';
@@ -58,7 +58,7 @@ export function Main() {
 	return (
 		<MainStyled>
 			<Routes>
-				<Route path="/" element={<Home />} />
+				<Route path="/" element={<Dashboard />} />
 				<Route path="/menu" element={<Menu />} />
 				<Route path="/shopping-list" element={<ShoppingList />} />
 			</Routes>
