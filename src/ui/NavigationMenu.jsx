@@ -30,12 +30,12 @@ const StyledNavLink = styled(NavLink)`
 	}
 
 	&:hover {
-		background-color: var(--color-light-stone);
+		background-color: var(--color-stone);
 		color: white;
 	}
 
 	&.active {
-		background-color: var(--color-desert-clay-light);
+		background-color: var(--color-desert-light);
 		color: white;
 		pointer-events: none;
 	}

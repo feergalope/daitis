@@ -1,13 +1,16 @@
 import { AppLayout } from './ui/AppLayout';
 import { Sidebar } from './ui/Sidebar';
 import { Main } from './ui/Main';
+import { LoadingProvider } from './context/LoadingContext';
 
 function App() {
 	return (
-		<AppLayout>
-			<Sidebar />
-			<Main />
-		</AppLayout>
+		<LoadingProvider>
+			<AppLayout>
+				<Sidebar />
+				<Main />
+			</AppLayout>
+		</LoadingProvider>
 	);
 }
 

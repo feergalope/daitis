@@ -4,15 +4,15 @@
 	--color-milk-light: #FDFCF8;
 	--color-milk-dark: #E8E4D8;
 
-	/* Light Stone */
-	--color-light-stone: #D8D2C2;
-	--color-light-stone-light: #E8E2D2;
-	--color-light-stone-dark: #C8C2B2;
+	/* Stone */
+	--color-stone: #D8D2C2;
+	--color-stone-light: #E8E2D2;
+	--color-stone-dark: #C8C2B2;
 
-	/* Desert Clay */
-	--color-desert-clay: #B17457;
-	--color-desert-clay-light: #C18467;
-	--color-desert-clay-dark: #A16447;
+	/* Desert */
+	--color-desert: #B17457;
+	--color-desert-light: #C18467;
+	--color-desert-dark: #A16447;
 
 	/* Graphite */
 	--color-graphite: #4A4947;

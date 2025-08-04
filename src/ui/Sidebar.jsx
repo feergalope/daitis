@@ -4,7 +4,7 @@ import { Logo } from './Logo';
 import { NavigationMenu } from './NavigationMenu';
 
 const StyledHeader = styled.header`
-	background-color: var(--color-light-stone-dark);
+	background-color: var(--color-stone-dark);
 	color: var(--color-graphite-dark);
 
 	height: calc(100dvh - 2rem); /* Viewport - margins */
