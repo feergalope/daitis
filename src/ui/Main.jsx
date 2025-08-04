@@ -14,11 +14,6 @@ const MainStyled = styled.main`
 	position: relative;
 	overflow-y: auto;
 	min-height: 0;
-
-	/* Mobile styles */
-	@media (max-width: 768px) {
-		padding-left: 4rem; /* Space for the toggle button */
-	}
 `;
 
 const LoadingOverlay = styled.div`

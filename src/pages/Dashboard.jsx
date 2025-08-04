@@ -36,6 +36,12 @@ const CardsGrid = styled.div`
 	flex-wrap: wrap;
 	gap: 1rem;
 	align-items: flex-start;
+
+	/* Mobile styles */
+	@media (max-width: 768px) {
+		flex-direction: column;
+		gap: 1rem;
+	}
 `;
 
 const Card = styled.div`
@@ -57,23 +63,43 @@ const Card = styled.div`
 		switch (props.size) {
 			case 'small':
 				return `
-					width: 10rem;
-					height: auto;
+					width: 150px;
+					height: 300px;
+					
+					@media (max-width: 768px) {
+						width: 100%;
+						height: 150px;
+					}
 				`;
 			case 'medium':
 				return `
-					width: 25rem;
-					height: auto;
+					width: 400px;
+					height: 300px;
+					
+					@media (max-width: 768px) {
+						width: 100%;
+						height: 300px;
+					}
 				`;
 			case 'large':
 				return `
-					width: 50rem;
-					height: auto;
+					width: 400px;
+					height: 600px;
+					
+					@media (max-width: 768px) {
+						width: 100%;
+						height: 600px;
+					}
 				`;
 			default:
 				return `
-					width: 300px;
-					height: 120px;
+					width: 150px;
+					height: 150px;
+					
+					@media (max-width: 768px) {
+						width: 100%;
+						height: 150px;
+					}
 				`;
 		}
 	}}
