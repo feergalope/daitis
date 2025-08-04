@@ -1,6 +1,8 @@
+import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { FaBarsProgress , FaCalendarDays, FaBasketShopping } from 'react-icons/fa6';
+import { useSidebar } from '../context/SidebarContext';
 
 const NavList = styled.ul`
 	display: flex;
@@ -42,22 +44,29 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 export function NavigationMenu() {
+	const { closeSidebar } = useSidebar();
+
+	const handleNavClick = () => {
+		// Close sidebar on mobile when a navigation link is clicked
+		closeSidebar();
+	};
+
 	return (
 		<NavList>
 			<NavItem>
-				<StyledNavLink to="/" end>
+				<StyledNavLink to="/" end onClick={handleNavClick}>
 					<FaBarsProgress  />
 					Dashboard
 				</StyledNavLink>
 			</NavItem>
 			<NavItem>
-				<StyledNavLink to="/menu">
+				<StyledNavLink to="/menu" onClick={handleNavClick}>
 					<FaCalendarDays />
 					Menu
 				</StyledNavLink>
 			</NavItem>
 			<NavItem>
-				<StyledNavLink to="/shopping-list">
+				<StyledNavLink to="/shopping-list" onClick={handleNavClick}>
 					<FaBasketShopping />
 					Shopping list
 				</StyledNavLink>
