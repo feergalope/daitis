@@ -61,11 +61,17 @@ const MealTime = styled.div`
 	${props => props.size === 'expanded' ? 'font-size: 0.7rem;' : 'font-size: 0.6rem;'}
 `;
 
-export function Meal({ meal, size = 'compact' }) {
+export function Meal({ meal, size = 'compact', onClick }) {
+	const handleClick = () => {
+		if (onClick) {
+			onClick(meal);
+		}
+	};
+
 	return (
-		<MealContainer category={meal.category} size={size}>
+		<MealContainer category={meal.category} size={size} onClick={handleClick}>
 			<MealTitle size={size}>{meal.title}</MealTitle>
-			<MealTime size={size}>{meal.time}</MealTime>
+			<MealTime size={size}>{meal.category}</MealTime>
 		</MealContainer>
 	);
 } 

@@ -12,7 +12,7 @@ createRoot(document.getElementById('root')).render(
 		<LoadingProvider>
 			<SidebarProvider>
 				<BrowserRouter>
-					<App />
+		<App />
 				</BrowserRouter>
 			</SidebarProvider>
 		</LoadingProvider>

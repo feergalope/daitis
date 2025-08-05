@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { mealService } from '../services/mealService';
 import { Meal } from '../ui/Meal';
+import { MealModal } from '../ui/MealModal';
 
 const DashboardContainer = styled.div`
 	display: flex;
@@ -178,6 +179,8 @@ const TodayMonth = styled.div`
 export function Dashboard() {
 	const [todayMeals, setTodayMeals] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
+	const [selectedMeal, setSelectedMeal] = useState(null);
+	const [isModalOpen, setIsModalOpen] = useState(false);
 	const today = new Date();
 	const navigate = useNavigate();
 
@@ -192,6 +195,16 @@ export function Dashboard() {
 
 	const handleMenuClick = () => {
 		navigate('/menu');
+	};
+
+	const handleMealClick = (meal) => {
+		setSelectedMeal(meal);
+		setIsModalOpen(true);
+	};
+
+	const handleCloseModal = () => {
+		setIsModalOpen(false);
+		setSelectedMeal(null);
 	};
 
 	useEffect(() => {
@@ -240,7 +253,12 @@ export function Dashboard() {
 								<NoMealsMessage>Loading today's meals...</NoMealsMessage>
 													) : todayMeals.length > 0 ? (
 							todayMeals.map((meal, index) => (
-								<Meal key={meal.id || index} meal={meal} size="expanded" />
+								<Meal 
+									key={meal.id || index} 
+									meal={meal} 
+									size="expanded" 
+									onClick={handleMealClick}
+								/>
 							))
 						) : (
 								<NoMealsMessage>No meals planned for today</NoMealsMessage>
@@ -249,6 +267,12 @@ export function Dashboard() {
 					</CardBody>
 				</Card>
 			</CardsGrid>
+
+			<MealModal 
+				isOpen={isModalOpen}
+				onClose={handleCloseModal}
+				meal={selectedMeal}
+			/>
 		</DashboardContainer>
 	);
 } 

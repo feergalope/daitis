@@ -1,5 +1,8 @@
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { FaTimes } from 'react-icons/fa';
 import { Meal } from '../Meal';
+import { MealModal } from '../MealModal';
 
 const ModalOverlay = styled.div`
 	position: fixed;
@@ -12,62 +15,85 @@ const ModalOverlay = styled.div`
 	justify-content: center;
 	align-items: center;
 	z-index: 1000;
+	padding: 1rem;
 `;
 
 const ModalContent = styled.div`
 	background-color: var(--color-milk-light);
-	border-radius: 0.5rem;
-	padding: 0.5rem;
+	border-radius: 1rem;
 	max-width: 600px;
-	width: 90%;
+	width: 100%;
 	max-height: 80vh;
 	overflow-y: auto;
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+	position: relative;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 `;
 
 const ModalHeader = styled.div`
+	background-color: var(--color-desert);
+	color: white;
+	padding: 1.5rem;
+	border-radius: 1rem 1rem 0 0;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 0.25rem;
-	padding-bottom: 0.25rem;
 `;
 
-const ModalTitle = styled.div`
-	color: var(--color-graphite-dark);
-	font-weight: 500;
-	font-size: 0.9rem;
-	margin-bottom: 0.25rem;
+const ModalTitle = styled.h2`
+	margin: 0;
+	font-size: 1.3rem;
+	font-weight: 600;
 `;
 
 const CloseButton = styled.button`
 	background: none;
 	border: none;
-	font-size: 0.9rem;
-	color: var(--color-graphite-dark);
+	color: white;
+	font-size: 1.5rem;
 	cursor: pointer;
-	padding: 0.25rem;
+	padding: 0.5rem;
 	border-radius: 0.25rem;
-	transition: background-color 0.2s;
+	transition: background-color 0.2s ease;
 
 	&:hover {
-		background-color: var(--color-stone);
+		background-color: rgba(255, 255, 255, 0.1);
 	}
 `;
 
-const NoMealsMessage = styled.div`
-	text-align: center;
-	color: var(--color-stone-dark);
-	font-style: italic;
-	padding: 0.5rem;
-	font-size: 0.7rem;
+const ModalBody = styled.div`
+	padding: 1.5rem;
+`;
+
+const MealList = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
 `;
 
 export function DayModal({ isOpen, onClose, selectedDate, meals }) {
+	const [isMealModalOpen, setIsMealModalOpen] = useState(false);
+	const [selectedMeal, setSelectedMeal] = useState(null);
+
 	if (!isOpen) return null;
 
+	const handleOverlayClick = (e) => {
+		if (e.target === e.currentTarget) {
+			onClose();
+		}
+	};
+
+	const handleMealClick = (meal) => {
+		setSelectedMeal(meal);
+		setIsMealModalOpen(true);
+	};
+
+	const closeMealModal = () => {
+		setIsMealModalOpen(false);
+		setSelectedMeal(null);
+	};
+
 	const formatDate = (date) => {
-		return new Date(date).toLocaleDateString('en-US', {
+		return date.toLocaleDateString('en-US', {
 			weekday: 'long',
 			year: 'numeric',
 			month: 'long',
@@ -76,23 +102,38 @@ export function DayModal({ isOpen, onClose, selectedDate, meals }) {
 	};
 
 	return (
-		<ModalOverlay onClick={onClose}>
-			<ModalContent onClick={(e) => e.stopPropagation()}>
+		<ModalOverlay onClick={handleOverlayClick}>
+			<ModalContent>
 				<ModalHeader>
-					<ModalTitle>{formatDate(selectedDate)}</ModalTitle>
-					<CloseButton onClick={onClose}>&times;</CloseButton>
+					<ModalTitle>{selectedDate ? formatDate(selectedDate) : 'Day Details'}</ModalTitle>
+					<CloseButton onClick={onClose}>
+						<FaTimes />
+					</CloseButton>
 				</ModalHeader>
-
-				{meals && meals.length > 0 ? (
-					<div>
-						{meals.map((meal, index) => (
-							<Meal key={index} meal={meal} size="compact" />
-						))}
-					</div>
-				) : (
-					<NoMealsMessage>No meals planned for this day</NoMealsMessage>
-				)}
+				
+				<ModalBody>
+					<MealList>
+						{meals && meals.length > 0 ? (
+							meals.map((meal, index) => (
+								<Meal 
+									key={meal.id || index} 
+									meal={meal} 
+									size="expanded" 
+									onClick={handleMealClick}
+								/>
+							))
+						) : (
+							<div>No meals for this day</div>
+						)}
+					</MealList>
+				</ModalBody>
 			</ModalContent>
+
+			<MealModal 
+				isOpen={isMealModalOpen}
+				onClose={closeMealModal}
+				meal={selectedMeal}
+			/>
 		</ModalOverlay>
 	);
 } 

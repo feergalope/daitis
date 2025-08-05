@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { CalendarHeader } from './CalendarHeader';
 import { getDaysInWeek, formatWeekRange } from '../../utils/calendar/weekUtils';
 import { DayModal } from './DayModal';
+import { MealModal } from '../MealModal';
 import { Meal } from '../Meal';
 
 const WeekViewContainer = styled.div`
@@ -14,7 +15,7 @@ const WeekViewContainer = styled.div`
 const WeekGrid = styled.div`
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
-	gap: 1px;
+	gap: 0.2rem;
 	background-color: var(--color-stone);
 	border-radius: 0.5rem;
 	overflow: hidden;
@@ -123,9 +124,11 @@ export function WeekCalendar({
 	onGoToToday,
 	meals
 }) {
-	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [isDayModalOpen, setIsDayModalOpen] = useState(false);
 	const [selectedDate, setSelectedDate] = useState(null);
 	const [selectedMeals, setSelectedMeals] = useState([]);
+	const [isMealModalOpen, setIsMealModalOpen] = useState(false);
+	const [selectedMeal, setSelectedMeal] = useState(null);
 	
 	const today = new Date();
 	const weekDays = getDaysInWeek(currentDate);
@@ -134,14 +137,29 @@ export function WeekCalendar({
 		if (dayEvents.length > 0 && isCurrentMonthDay) {
 			setSelectedDate(day);
 			setSelectedMeals(dayEvents);
-			setIsModalOpen(true);
+			setIsDayModalOpen(true);
 		}
 	};
 
-	const closeModal = () => {
-		setIsModalOpen(false);
+	const closeDayModal = () => {
+		setIsDayModalOpen(false);
 		setSelectedDate(null);
 		setSelectedMeals([]);
+	};
+
+	const handleMealClick = (meal) => {
+		setSelectedMeal(meal);
+		setIsMealModalOpen(true);
+	};
+
+	const closeMealModal = () => {
+		setIsMealModalOpen(false);
+		setSelectedMeal(null);
+	};
+
+	const handleMealClickWithStopPropagation = (meal, event) => {
+		event.stopPropagation();
+		handleMealClick(meal);
 	};
 
 	return (
@@ -178,7 +196,12 @@ export function WeekCalendar({
 							<MobileDayHeader>{dayLabels[index]}</MobileDayHeader>
 							<WeekDayNumber>{dayNumber}</WeekDayNumber>
 							{displayMeals.map((meal, mealIndex) => (
-								<Meal key={mealIndex} meal={meal} size="compact" />
+								<div key={mealIndex} onClick={(e) => handleMealClickWithStopPropagation(meal, e)}>
+									<Meal 
+										meal={meal} 
+										size="compact" 
+									/>
+								</div>
 							))}
 							{showMore && (
 								<MoreMeals>+{dayMeals.length - 3} more</MoreMeals>
@@ -189,10 +212,16 @@ export function WeekCalendar({
 			</WeekGrid>
 			
 			<DayModal
-				isOpen={isModalOpen}
-				onClose={closeModal}
+				isOpen={isDayModalOpen}
+				onClose={closeDayModal}
 				selectedDate={selectedDate}
 				meals={selectedMeals}
+			/>
+
+			<MealModal 
+				isOpen={isMealModalOpen}
+				onClose={closeMealModal}
+				meal={selectedMeal}
 			/>
 		</WeekViewContainer>
 	);

@@ -5,33 +5,189 @@
 // Sample data - will be replaced with API calls
 const sampleEvents = {
 	1: [
-		{ id: 1, title: "Oatmeal with berries", time: "8:00 a.m.", category: "breakfast", date: "2024-01-01" },
-		{ id: 2, title: "Grilled chicken salad", time: "1:00 p.m.", category: "lunch", date: "2024-01-01" },
+		{ 
+			id: 1, 
+			title: "Oatmeal with berries", 
+			time: "8:00 a.m.", 
+			category: "breakfast", 
+			date: "2024-01-01",
+			ingredients: [
+				"1 cup rolled oats",
+				"2 cups water",
+				"1/4 cup mixed berries",
+				"1 tbsp honey",
+				"1/4 cup chopped nuts"
+			],
+			instructions: [
+				"Bring water to a boil in a medium saucepan",
+				"Add oats and reduce heat to low",
+				"Cook for 5 minutes, stirring occasionally",
+				"Top with berries, honey, and nuts",
+				"Serve hot"
+			]
+		},
+		{ 
+			id: 2, 
+			title: "Grilled chicken salad", 
+			time: "1:00 p.m.", 
+			category: "lunch", 
+			date: "2024-01-01",
+			ingredients: [
+				"1 chicken breast",
+				"Mixed salad greens",
+				"Cherry tomatoes",
+				"Cucumber slices",
+				"Olive oil",
+				"Balsamic vinegar"
+			],
+			instructions: [
+				"Season chicken breast with salt and pepper",
+				"Grill chicken for 6-8 minutes per side",
+				"Let chicken rest for 5 minutes",
+				"Slice chicken and arrange on salad",
+				"Drizzle with olive oil and balsamic"
+			]
+		},
 		{ id: 3, title: "Apple slices", time: "3:00 p.m.", category: "snack", date: "2024-01-01" },
-		{ id: 4, title: "Salmon with vegetables", time: "7:30 p.m.", category: "dinner", date: "2024-01-01" },
+		{ 
+			id: 4, 
+			title: "Salmon with vegetables", 
+			time: "7:30 p.m.", 
+			category: "dinner", 
+			date: "2024-01-01",
+			ingredients: [
+				"2 salmon fillets",
+				"Broccoli florets",
+				"Asparagus",
+				"Lemon",
+				"Olive oil",
+				"Garlic powder"
+			],
+			instructions: [
+				"Preheat oven to 400°F",
+				"Season salmon with lemon, garlic, and olive oil",
+				"Arrange vegetables on baking sheet",
+				"Bake salmon and vegetables for 15-20 minutes",
+				"Serve with lemon wedges"
+			]
+		},
 		{ id: 5, title: "Chocolate cake", time: "8:30 p.m.", category: "dessert", date: "2024-01-01" }
 	],
 	2: [
-		{ id: 6, title: "Greek yogurt parfait", time: "7:30 a.m.", category: "breakfast", date: "2024-01-02" },
-		{ id: 7, title: "Quinoa bowl", time: "12:30 p.m.", category: "lunch", date: "2024-01-02" },
+		{ 
+			id: 6, 
+			title: "Greek yogurt parfait", 
+			time: "7:30 a.m.", 
+			category: "breakfast", 
+			date: "2024-01-02",
+			ingredients: [
+				"1 cup Greek yogurt",
+				"1/4 cup granola",
+				"1/4 cup mixed berries",
+				"1 tbsp honey"
+			],
+			instructions: [
+				"Layer half the yogurt in a glass",
+				"Add half the granola and berries",
+				"Repeat layers",
+				"Drizzle with honey",
+				"Serve immediately"
+			]
+		},
+		{ 
+			id: 7, 
+			title: "Quinoa bowl", 
+			time: "12:30 p.m.", 
+			category: "lunch", 
+			date: "2024-01-02",
+			ingredients: [
+				"1 cup quinoa",
+				"2 cups vegetable broth",
+				"Cherry tomatoes",
+				"Cucumber",
+				"Red onion",
+				"Feta cheese",
+				"Olive oil"
+			],
+			instructions: [
+				"Rinse quinoa thoroughly",
+				"Cook quinoa in vegetable broth for 15 minutes",
+				"Let quinoa cool completely",
+				"Chop vegetables and mix with quinoa",
+				"Add feta cheese and drizzle with olive oil"
+			]
+		},
 		{ id: 8, title: "Pasta primavera", time: "8:00 p.m.", category: "dinner", date: "2024-01-02" }
 	],
 	3: [
 		{ id: 9, title: "Avocado toast", time: "8:15 a.m.", category: "breakfast", date: "2024-01-03" },
 		{ id: 10, title: "Turkey sandwich", time: "1:15 p.m.", category: "lunch", date: "2024-01-03" },
 		{ id: 11, title: "Mixed nuts", time: "4:00 p.m.", category: "snack", date: "2024-01-03" },
-		{ id: 12, title: "Beef stir-fry", time: "7:45 p.m.", category: "dinner", date: "2024-01-03" }
+		{ 
+			id: 12, 
+			title: "Beef stir-fry", 
+			time: "7:45 p.m.", 
+			category: "dinner", 
+			date: "2024-01-03",
+			ingredients: [
+				"1 lb beef strips",
+				"Broccoli florets",
+				"Bell peppers",
+				"Soy sauce",
+				"Garlic",
+				"Ginger",
+				"Vegetable oil"
+			],
+			instructions: [
+				"Heat oil in a wok or large skillet",
+				"Stir-fry beef until browned, remove from pan",
+				"Add vegetables and stir-fry for 3-4 minutes",
+				"Return beef to pan with soy sauce",
+				"Cook for 2 more minutes and serve"
+			]
+		}
 	],
 	4: [
 		{ id: 13, title: "Smoothie bowl", time: "7:45 a.m.", category: "breakfast", date: "2024-01-04" },
 		{ id: 14, title: "Caesar salad", time: "12:45 p.m.", category: "lunch", date: "2024-01-04" },
-		{ id: 15, title: "Vegetable curry", time: "8:15 p.m.", category: "dinner", date: "2024-01-04" },
+		{ id: 15, title: "Vegetable curry", time: "8:15 p.m.", category: "dinner", date: "2024-01-04",
+			ingredients: [
+				"1 lb beef strips",
+				"Broccoli florets",
+				"Bell peppers",
+				"Soy sauce",
+				"Garlic",
+				"Ginger",
+				"Vegetable oil"
+			],
+			instructions: [
+				"Heat oil in a wok or large skillet",
+				"Stir-fry beef until browned, remove from pan",
+				"Add vegetables and stir-fry for 3-4 minutes",
+				"Return beef to pan with soy sauce",
+				"Cook for 2 more minutes and serve"
+			] },
 		{ id: 16, title: "Ice cream", time: "9:00 p.m.", category: "dessert", date: "2024-01-04" }
 	],
 	5: [
 		{ id: 17, title: "Eggs benedict", time: "8:30 a.m.", category: "breakfast", date: "2024-01-05" },
 		{ id: 18, title: "Soup and sandwich", time: "1:30 p.m.", category: "lunch", date: "2024-01-05" },
-		{ id: 19, title: "Grilled fish tacos", time: "7:30 p.m.", category: "dinner", date: "2024-01-05" }
+		{ id: 19, title: "Grilled fish tacos", time: "7:30 p.m.", category: "dinner", date: "2024-01-05",ingredients: [
+			"1 lb beef strips",
+			"Broccoli florets",
+			"Bell peppers",
+			"Soy sauce",
+			"Garlic",
+			"Ginger",
+			"Vegetable oil"
+		],
+		instructions: [
+			"Heat oil in a wok or large skillet",
+			"Stir-fry beef until browned, remove from pan",
+			"Add vegetables and stir-fry for 3-4 minutes",
+			"Return beef to pan with soy sauce",
+			"Cook for 2 more minutes and serve"
+		] }
 	],
 	6: [
 		{ id: 20, title: "Pancakes with maple syrup", time: "8:00 a.m.", category: "breakfast", date: "2024-01-06" },
