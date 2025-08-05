@@ -6,17 +6,36 @@ const HeaderContainer = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 1rem;
+
+	/* Mobile styles */
+	@media (max-width: 768px) {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1rem;
+	}
 `;
 
 const HeaderLeft = styled.div`
 	display: flex;
 	align-items: center;
+
+	/* Mobile styles */
+	@media (max-width: 768px) {
+		width: 100%;
+		justify-content: space-between;
+	}
 `;
 
 const HeaderRight = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 1rem;
+
+	/* Mobile styles */
+	@media (max-width: 768px) {
+		width: 100%;
+		justify-content: center;
+	}
 `;
 
 const MonthYear = styled.h2`
@@ -24,11 +43,22 @@ const MonthYear = styled.h2`
 	font-size: 1.5rem;
 	font-weight: 600;
 	margin-left: 1rem;
+
+	/* Mobile styles */
+	@media (max-width: 768px) {
+		margin-left: 0;
+		font-size: 1.3rem;
+	}
 `;
 
 const ButtonGroup = styled.div`
 	display: flex;
 	gap: 0.5rem;
+
+	/* Mobile styles */
+	@media (max-width: 768px) {
+		gap: 0.25rem;
+	}
 `;
 
 const ViewButton = styled.button`
@@ -44,6 +74,12 @@ const ViewButton = styled.button`
 
 	&:hover {
 		background-color: ${props => props.$active ? 'var(--color-desert-dark)' : 'var(--color-stone)'};
+	}
+
+	/* Mobile styles */
+	@media (max-width: 768px) {
+		padding: 0.75rem 1.5rem;
+		font-size: 0.9rem;
 	}
 `;
 
@@ -64,6 +100,12 @@ const NavButton = styled.button`
 
 	&:hover {
 		background-color: var(--color-stone);
+	}
+
+	/* Mobile styles */
+	@media (max-width: 768px) {
+		font-size: 1.4rem;
+		padding: 0.5rem 0.75rem;
 	}
 `;
 

@@ -21,6 +21,14 @@ const WeekGrid = styled.div`
 	transition: all 1s ease;
 	gap: 0.25rem;
 	padding: 0.2rem;
+
+	/* Mobile styles */
+	@media (max-width: 768px) {
+		grid-template-columns: 1fr;
+		gap: 0.5rem;
+		padding: 0.5rem;
+		background-color: transparent;
+	}
 `;
 
 const WeekDayCell = styled.div`
@@ -46,6 +54,13 @@ const WeekDayCell = styled.div`
 		opacity: 1;
 		padding: 0.25rem;
 	}
+
+	/* Mobile styles */
+	@media (max-width: 768px) {
+		min-height: auto;
+		padding: 1rem;
+		border: 1px solid var(--color-stone);
+	}
 `;
 
 const WeekDayHeader = styled.div`
@@ -56,6 +71,11 @@ const WeekDayHeader = styled.div`
 	font-weight: 600;
 	font-size: 0.8rem;
 	text-transform: uppercase;
+
+	/* Mobile styles */
+	@media (max-width: 768px) {
+		display: none;
+	}
 `;
 
 const WeekDayNumber = styled.div`
@@ -63,9 +83,28 @@ const WeekDayNumber = styled.div`
 	font-weight: 500;
 	font-size: 0.9rem;
 	margin-bottom: 0.25rem;
+
+	/* Mobile styles */
+	@media (max-width: 768px) {
+		font-size: 1.1rem;
+		font-weight: 600;
+		margin-bottom: 0.5rem;
+	}
 `;
 
+const MobileDayHeader = styled.div`
+	display: none;
+	color: var(--color-graphite-dark);
+	font-weight: 600;
+	font-size: 0.9rem;
+	text-transform: uppercase;
+	margin-bottom: 0.5rem;
 
+	/* Mobile styles */
+	@media (max-width: 768px) {
+		display: block;
+	}
+`;
 
 const MoreMeals = styled.div`
 	color: var(--color-graphite);
@@ -136,6 +175,7 @@ export function WeekCalendar({
 							$hasMeals={hasMeals}
 							onClick={() => handleDayClick(day, dayMeals, isCurrentMonthDay)}
 						>
+							<MobileDayHeader>{dayLabels[index]}</MobileDayHeader>
 							<WeekDayNumber>{dayNumber}</WeekDayNumber>
 							{displayMeals.map((meal, mealIndex) => (
 								<Meal key={mealIndex} meal={meal} size="compact" />

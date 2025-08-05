@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import { mealService } from '../services/mealService';
 import { Meal } from '../ui/Meal';
 
@@ -29,6 +30,28 @@ const DashboardSubtitle = styled.p`
 	color: var(--color-graphite);
 	margin: 0;
 	font-size: 1rem;
+`;
+
+const MenuButton = styled.button`
+	background-color: var(--color-desert);
+	color: white;
+	border: none;
+	border-radius: 0.5rem;
+	padding: 0.5rem 1rem;
+	font-size: 0.9rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+
+	&:hover {
+		background-color: var(--color-desert-dark);
+	}
+
+	/* Mobile styles */
+	@media (max-width: 768px) {
+		padding: 0.75rem 1.25rem;
+		font-size: 1rem;
+	}
 `;
 
 const CardsGrid = styled.div`
@@ -103,11 +126,6 @@ const Card = styled.div`
 				`;
 		}
 	}}
-
-	&:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-	}
 `;
 
 const CardHeader = styled.div`
@@ -161,6 +179,7 @@ export function Dashboard() {
 	const [todayMeals, setTodayMeals] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const today = new Date();
+	const navigate = useNavigate();
 
 	const formatDate = (date) => {
 		return date.toLocaleDateString('en-US', {
@@ -169,6 +188,10 @@ export function Dashboard() {
 			month: 'long',
 			day: 'numeric'
 		});
+	};
+
+	const handleMenuClick = () => {
+		navigate('/menu');
 	};
 
 	useEffect(() => {
@@ -207,6 +230,9 @@ export function Dashboard() {
 				<Card size="medium" variant="stats">
 					<CardHeader>
 						<CardTitle>Today's Meals</CardTitle>
+						<MenuButton onClick={handleMenuClick}>
+							Go to Menu
+						</MenuButton>
 					</CardHeader>
 					<CardBody>
 						<MealList>

@@ -25,7 +25,7 @@ const StyledHeader = styled.header`
 	@media (max-width: 768px) {
 		position: fixed;
 		top: 0;
-		left: ${props => props.$isOpen ? '0' : '-100%'};
+		left: ${props => props.isOpen ? '0' : '-100%'};
 		width: 80vw;
 		height: 100vh;
 		margin: 0;
@@ -39,7 +39,7 @@ const MobileOverlay = styled.div`
 	display: none;
 	
 	@media (max-width: 768px) {
-		display: ${props => props.$isOpen ? 'block' : 'none'};
+		display: ${props => props.isOpen ? 'block' : 'none'};
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -106,9 +106,9 @@ export function Sidebar() {
 				<FaBars />
 			</MobileToggleButton>
 			
-			<MobileOverlay $isOpen={isSidebarOpen} onClick={closeSidebar} />
+			<MobileOverlay isOpen={isSidebarOpen} onClick={closeSidebar} />
 			
-			<StyledHeader $isOpen={isSidebarOpen}>
+			<StyledHeader isOpen={isSidebarOpen}>
 				<CloseButton onClick={closeSidebar}>
 					<FaTimes />
 				</CloseButton>
